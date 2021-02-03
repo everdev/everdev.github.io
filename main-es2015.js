@@ -37,6 +37,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 /* harmony import */ var _core_auth_guards_auth_guard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./core/auth/_guards/auth.guard */ "./src/app/core/auth/_guards/auth.guard.ts");
 /* harmony import */ var _views_theme_base_base_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./views/theme/base/base.component */ "./src/app/views/theme/base/base.component.ts");
+/* harmony import */ var _views_pages_boarding_subs_facial_recognition_facial_recognition_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./views/pages/boarding/_subs/facial-recognition/facial-recognition.component */ "./src/app/views/pages/boarding/_subs/facial-recognition/facial-recognition.component.ts");
+
 
 
 
@@ -44,7 +46,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 const routes = [
-    { path: 'iniciar', loadChildren: () => Promise.resolve(/*! import() */).then(__webpack_require__.bind(null, /*! ./views/pages/auth/auth.module */ "./src/app/views/pages/auth/auth.module.ts")).then(m => m.AuthModule) },
+    { path: 'iniciar',
+        component: _views_pages_boarding_subs_facial_recognition_facial_recognition_component__WEBPACK_IMPORTED_MODULE_4__["FacialRecognitionComponent"] },
     { path: 'oops', loadChildren: () => __webpack_require__.e(/*! import() | views-pages-error-error-module */ "views-pages-error-error-module").then(__webpack_require__.bind(null, /*! ./views/pages/error/error.module */ "./src/app/views/pages/error/error.module.ts")).then(m => m.ErrorModule) },
     {
         path: '',
@@ -569,11 +572,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "GeneralConfigResolverService", function() { return GeneralConfigResolverService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
 /* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm2015/operators/index.js");
-/* harmony import */ var _parameters_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../parameters.service */ "./src/app/core/boarding/_services/parameters.service.ts");
-/* harmony import */ var _base_services_config_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../../_base/services/config.service */ "./src/app/core/_base/services/config.service.ts");
-/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
-
+/* harmony import */ var _parameters_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../parameters.service */ "./src/app/core/boarding/_services/parameters.service.ts");
+/* harmony import */ var _base_services_config_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../_base/services/config.service */ "./src/app/core/_base/services/config.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
 
 
 
@@ -587,26 +588,29 @@ class GeneralConfigResolverService {
         this.router = router;
     }
     resolve(route, state) {
-        return this.paramsService.GetParameters().pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["take"])(1), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_2__["mergeMap"])(crisis => {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])({});
+        /* return this.paramsService.GetParameters().pipe(
+          take(1),
+          mergeMap(crisis => {
             if (crisis) {
-                localStorage.setItem(this.cs.getVarName(), btoa(JSON.stringify(crisis)));
-                return Object(rxjs__WEBPACK_IMPORTED_MODULE_1__["of"])(crisis);
+              localStorage.setItem(this.cs.getVarName(), btoa(JSON.stringify(crisis)));
+              return of(crisis);
+            } else {
+              this.router.navigate(['/oops']);
+              return EMPTY;
             }
-            else {
-                this.router.navigate(['/oops']);
-                return rxjs__WEBPACK_IMPORTED_MODULE_1__["EMPTY"];
-            }
-        }));
+          })
+        ); */
     }
 }
-GeneralConfigResolverService.ɵfac = function GeneralConfigResolverService_Factory(t) { return new (t || GeneralConfigResolverService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_parameters_service__WEBPACK_IMPORTED_MODULE_3__["ParametersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_base_services_config_service__WEBPACK_IMPORTED_MODULE_4__["ConfigService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"])); };
+GeneralConfigResolverService.ɵfac = function GeneralConfigResolverService_Factory(t) { return new (t || GeneralConfigResolverService)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_parameters_service__WEBPACK_IMPORTED_MODULE_2__["ParametersService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_base_services_config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵinject"](_angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"])); };
 GeneralConfigResolverService.ɵprov = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineInjectable"]({ token: GeneralConfigResolverService, factory: GeneralConfigResolverService.ɵfac, providedIn: 'root' });
 /*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](GeneralConfigResolverService, [{
         type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"],
         args: [{
                 providedIn: 'root'
             }]
-    }], function () { return [{ type: _parameters_service__WEBPACK_IMPORTED_MODULE_3__["ParametersService"] }, { type: _base_services_config_service__WEBPACK_IMPORTED_MODULE_4__["ConfigService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }]; }, null); })();
+    }], function () { return [{ type: _parameters_service__WEBPACK_IMPORTED_MODULE_2__["ParametersService"] }, { type: _base_services_config_service__WEBPACK_IMPORTED_MODULE_3__["ConfigService"] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] }]; }, null); })();
 
 
 /***/ }),
@@ -1557,6 +1561,493 @@ StatementsComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefi
                 styles: []
             }]
     }], function () { return [{ type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }, { type: _core_base_services_audit_service__WEBPACK_IMPORTED_MODULE_2__["AuditService"] }, { type: _core_boarding_services_parameters_service__WEBPACK_IMPORTED_MODULE_3__["ParametersService"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/views/pages/boarding/_subs/facial-recognition/facial-recognition.component.ts":
+/*!***********************************************************************************************!*\
+  !*** ./src/app/views/pages/boarding/_subs/facial-recognition/facial-recognition.component.ts ***!
+  \***********************************************************************************************/
+/*! exports provided: FacialRecognitionComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FacialRecognitionComponent", function() { return FacialRecognitionComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+/* harmony import */ var src_app_views_partials_alert_block_alert_block_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/views/partials/alert-block/alert-block.component */ "./src/app/views/partials/alert-block/alert-block.component.ts");
+/* harmony import */ var src_app_views_partials_face_ok_face_ok_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/views/partials/face-ok/face-ok.component */ "./src/app/views/partials/face-ok/face-ok.component.ts");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/dialog.js");
+/* harmony import */ var ngx_device_detector__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-device-detector */ "./node_modules/ngx-device-detector/__ivy_ngcc__/fesm2015/ngx-device-detector.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/__ivy_ngcc__/fesm2015/common.js");
+/* harmony import */ var ngx_webcam__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ngx-webcam */ "./node_modules/ngx-webcam/__ivy_ngcc__/fesm2015/ngx-webcam.js");
+/* harmony import */ var _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/material/progress-spinner */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/progress-spinner.js");
+
+
+
+
+
+
+
+
+
+
+
+
+function FacialRecognitionComponent_div_4_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 10);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "i", 11);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "span", 12);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, " No se encontraron coincidencias, Favor Reintente, con mejor calidad de foto. ");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_7_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "i", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_8_div_1_webcam_1_Template(rf, ctx) { if (rf & 1) {
+    const _r15 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "webcam", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("imageCapture", function FacialRecognitionComponent_div_8_div_1_webcam_1_Template_webcam_imageCapture_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r14 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r14.handleImage($event); })("cameraSwitched", function FacialRecognitionComponent_div_8_div_1_webcam_1_Template_webcam_cameraSwitched_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r16 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r16.cameraWasSwitched($event); })("initError", function FacialRecognitionComponent_div_8_div_1_webcam_1_Template_webcam_initError_0_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r15); const ctx_r17 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r17.handleInitError($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r12 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("width", ctx_r12.screenWidth)("height", 320)("trigger", ctx_r12.triggerObservable)("allowCameraSwitch", ctx_r12.allowCameraSwitch)("switchCamera", ctx_r12.nextWebcamObservable)("videoOptions", ctx_r12.videoOptions)("imageQuality", 0.1);
+} }
+function FacialRecognitionComponent_div_8_div_1_div_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 23);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](2, "mat-spinner", 24);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_8_div_1_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 20);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, FacialRecognitionComponent_div_8_div_1_webcam_1_Template, 1, 7, "webcam", 21);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, FacialRecognitionComponent_div_8_div_1_div_2_Template, 3, 0, "div", 4);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r9 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx_r9.photoTaken);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r9.photoTaken);
+} }
+function FacialRecognitionComponent_div_8_ng_template_2_div_0_Template(rf, ctx) { if (rf & 1) {
+    const _r20 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 26);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "webcam", 22);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("imageCapture", function FacialRecognitionComponent_div_8_ng_template_2_div_0_Template_webcam_imageCapture_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20); const ctx_r19 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r19.handleImage($event); })("cameraSwitched", function FacialRecognitionComponent_div_8_ng_template_2_div_0_Template_webcam_cameraSwitched_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20); const ctx_r21 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r21.cameraWasSwitched($event); })("initError", function FacialRecognitionComponent_div_8_ng_template_2_div_0_Template_webcam_initError_1_listener($event) { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r20); const ctx_r22 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3); return ctx_r22.handleInitError($event); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const ctx_r18 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](3);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("width", ctx_r18.widthCedCam)("height", 350)("trigger", ctx_r18.triggerObservable)("allowCameraSwitch", ctx_r18.allowCameraSwitch)("switchCamera", ctx_r18.nextWebcamObservable)("videoOptions", ctx_r18.videoOptionsCedula)("imageQuality", 0.1);
+} }
+function FacialRecognitionComponent_div_8_ng_template_2_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](0, FacialRecognitionComponent_div_8_ng_template_2_div_0_Template, 2, 7, "div", 25);
+} if (rf & 2) {
+    const ctx_r11 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](2);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r11.showWebcam && !ctx_r11.cedulaFailed);
+} }
+function FacialRecognitionComponent_div_8_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 17);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](1, FacialRecognitionComponent_div_8_div_1_Template, 3, 2, "div", 18);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](2, FacialRecognitionComponent_div_8_ng_template_2_Template, 1, 1, "ng-template", null, 19, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplateRefExtractor"]);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} if (rf & 2) {
+    const _r10 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](3);
+    const ctx_r2 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx_r2.showWebcam && !ctx_r2.rcFailed)("ngIfElse", _r10);
+} }
+function FacialRecognitionComponent_ng_template_9_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 13);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 14);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "div", 15);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "i", 16);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](5, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_11_Template(rf, ctx) { if (rf & 1) {
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 27);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "strong", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, "INSTRUCCIONES");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](5, "strong", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](6, "a) Ubicarse de forma frontal a su c\u00E1mara.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](7, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](8, "strong", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](9, "b) Procure estar en un sitio iluminado.");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](10, "br");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](11, "strong", 29);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](12, "c) Cuando est\u00E9 listo presiona bot\u00F3n \"TOMAR SELFIE\".");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_13_Template(rf, ctx) { if (rf & 1) {
+    const _r24 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacialRecognitionComponent_div_13_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r24); const ctx_r23 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r23.reconocimientoFacial(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, " TOMAR SELFIE \u00A0\u00A0\u00A0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "i", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_14_Template(rf, ctx) { if (rf & 1) {
+    const _r26 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 30);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacialRecognitionComponent_div_14_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r26); const ctx_r25 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r25.showNextWebcam(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, " GIRAR C\u00C1MARA \u00A0\u00A0\u00A0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "i", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+function FacialRecognitionComponent_div_15_Template(rf, ctx) { if (rf & 1) {
+    const _r28 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵgetCurrentView"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 33);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](1, "div", 28);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](2, "button", 31);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("click", function FacialRecognitionComponent_div_15_Template_button_click_2_listener() { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵrestoreView"](_r28); const ctx_r27 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵnextContext"](); return ctx_r27.validacionCedula(); });
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](3, " CAPTURAR \u00A0\u00A0\u00A0");
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](4, "i", 32);
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+} }
+class FacialRecognitionComponent {
+    constructor(dialog, deviceService) {
+        this.dialog = dialog;
+        this.deviceService = deviceService;
+        this.pictureTaken = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["EventEmitter"]();
+        this.rcFailed = false;
+        this.cedulaFailed = false;
+        this.showWebcam = true;
+        this.showFooterWebcam = false;
+        this.finishprocess = true;
+        this.cameraFrontal = true;
+        this.contadorBloqueo = 0;
+        this.compareSuccesfuly = false;
+        this.photoTaken = false;
+        this.falloReconocimientoFacial = false;
+        this.haveWebCam = false;
+        this.allowCameraSwitch = true;
+        this.multipleWebcamsAvailable = false;
+        this.videoOptions = {
+            width: { ideal: 170, max: 2400 },
+            height: { ideal: 160, max: 1800 },
+        };
+        this.videoOptionsCedula = {
+            width: { ideal: 220, max: 2400 },
+            height: { ideal: 120, max: 1800 },
+        };
+        this.errors = [];
+        this.fileToUpload = null;
+        this.trigger = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.nextWebcam = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+        this.getScreenSize();
+    }
+    getScreenSize(event) {
+        this.screenHeight = window.innerHeight;
+        this.screenWidth = window.innerWidth - 50;
+        window.innerWidth < 575
+            ? (this.widthCedCam = this.screenWidth)
+            : (this.widthCedCam = 450);
+    }
+    ngOnInit() {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+        });
+    }
+    triggerSnapshot() {
+        this.trigger.next();
+    }
+    toggleWebcam() {
+        this.showWebcam = !this.showWebcam;
+    }
+    handleInitError(error) {
+        if (error.mediaStreamError &&
+            error.mediaStreamError.name === 'NotAllowedError') {
+            this.dialog.closeAll();
+            const dialogRef = this.dialog.open(src_app_views_partials_alert_block_alert_block_component__WEBPACK_IMPORTED_MODULE_3__["AlertBlockComponent"], {
+                data: {
+                    mensaje: 'Permisos Denegados, no se puede continuar con el proceso de apertura de cuenta.',
+                },
+            });
+            this.showFooterWebcam = false;
+        }
+        this.errors = [];
+        this.errors.push(error);
+    }
+    showNextWebcam() {
+        this.cameraFrontal = !this.cameraFrontal;
+        this.nextWebcam.next(this.cameraFrontal);
+    }
+    handleImage(webcamImage) {
+        return Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"])(this, void 0, void 0, function* () {
+            this.photoTaken = true;
+            this.falloReconocimientoFacial = false;
+            this.pictureTaken.emit(webcamImage);
+            let imageurl = webcamImage.imageAsDataUrl;
+            const response = yield fetch(imageurl);
+            const blob = yield response.blob();
+        });
+    }
+    Paso1Succesfull() {
+        this.toggleWebcam();
+        this.rcFailed = false;
+        this.finishprocess = false;
+    }
+    Bloqueo() {
+        this.toggleWebcam();
+        this.rcFailed = false;
+        this.finishprocess = false;
+        this.alertBloqueo();
+    }
+    alertBloqueo() {
+        const dialogRef = this.dialog.open(src_app_views_partials_alert_block_alert_block_component__WEBPACK_IMPORTED_MODULE_3__["AlertBlockComponent"], {
+            data: {
+                mensaje: 'Ha excedido el número de intentos permitidos.',
+            },
+        });
+    }
+    alertSucces() {
+        const dialogRef = this.dialog.open(src_app_views_partials_face_ok_face_ok_component__WEBPACK_IMPORTED_MODULE_4__["FaceOkComponent"], {
+            data: {},
+        });
+        dialogRef.afterClosed().subscribe((res) => {
+            if (!res) {
+                return;
+            }
+        });
+    }
+    cameraWasSwitched(deviceId) {
+        this.deviceId = deviceId;
+    }
+    get triggerObservable() {
+        return this.trigger.asObservable();
+    }
+    get nextWebcamObservable() {
+        return this.nextWebcam.asObservable();
+    }
+    reconocimientoFacial() {
+        this.triggerSnapshot();
+    }
+    validacionCedula() {
+        this.triggerSnapshot();
+    }
+}
+FacialRecognitionComponent.ɵfac = function FacialRecognitionComponent_Factory(t) { return new (t || FacialRecognitionComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"]), _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdirectiveInject"](ngx_device_detector__WEBPACK_IMPORTED_MODULE_6__["DeviceDetectorService"])); };
+FacialRecognitionComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵdefineComponent"]({ type: FacialRecognitionComponent, selectors: [["app-facial-recognition"]], hostBindings: function FacialRecognitionComponent_HostBindings(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵlistener"]("resize", function FacialRecognitionComponent_resize_HostBindingHandler($event) { return ctx.getScreenSize($event); }, false, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵresolveWindow"]);
+    } }, outputs: { pictureTaken: "pictureTaken" }, decls: 17, vars: 8, consts: [["role", "alert", 1, "alert", "alert-inf", "mb-0"], [1, "fas", "fa-exclamation-circle", "mr-2", 2, "color", "rgb(38, 95, 48)", "font-size", "20px"], ["style", "background-color: #920808", "class", "alert alert-inf mb-0", "role", "alert", 4, "ngIf"], [1, "container"], ["style", "text-align: center", "class", "row justify-content-center", 4, "ngIf"], ["class", "row justify-content-center", 4, "ngIf", "ngIfElse"], ["noCamera", ""], ["class", "row row-cols-1 justify-content-center", "style", "margin-top: 15px", 4, "ngIf"], ["class", "row row-cols-1 justify-content-center", 4, "ngIf"], ["style", "margin-top: 5px", "class", "row row-cols-1 justify-content-center", 4, "ngIf"], ["role", "alert", 1, "alert", "alert-inf", "mb-0", 2, "background-color", "#920808"], [1, "fas", "fa-times-circle", "mr-2", 2, "color", "#ffffff", "font-size", "20px"], [2, "color", "#ffffff"], [1, "row", "justify-content-center", 2, "text-align", "center"], [1, "col", "col-10", "col-sm-6", "col-md-5", "col-lg-4", "col-xl-3"], [2, "height", "300px", "width", "270px", "padding-top", "70px", "background-color", "#e7e3e2"], [1, "fas", "fa-user-alt", 2, "margin-left", "auto", "margin-right", "auto", "font-size", "130px", "color", "#707070"], [1, "row", "justify-content-center"], ["style", "text-align: center; padding: 0", "class", "col col-12 col-sm-10 col-md-8 col-lg-6 col-xl-5", 4, "ngIf", "ngIfElse"], ["validwithCedula", ""], [1, "col", "col-12", "col-sm-10", "col-md-8", "col-lg-6", "col-xl-5", 2, "text-align", "center", "padding", "0"], [3, "width", "height", "trigger", "allowCameraSwitch", "switchCamera", "videoOptions", "imageQuality", "imageCapture", "cameraSwitched", "initError", 4, "ngIf"], [3, "width", "height", "trigger", "allowCameraSwitch", "switchCamera", "videoOptions", "imageQuality", "imageCapture", "cameraSwitched", "initError"], [2, "height", "300px", "width", "270px", "padding-top", "90px", "background-color", "#e7e3e2"], [2, "margin-left", "auto", "margin-right", "auto", "font-size", "130px"], ["style", "text-align: center; padding: 0", "class", "col col-12 col-sm-12", 4, "ngIf"], [1, "col", "col-12", "col-sm-12", 2, "text-align", "center", "padding", "0"], [1, "row", "row-cols-1", "justify-content-center", 2, "margin-top", "15px"], [1, "col-auto"], [2, "color", "#707070"], [1, "row", "row-cols-1", "justify-content-center"], [1, "btn-primary", "btn", 2, "text-transform", "uppercase", "width", "200px", 3, "click"], [1, "fas", "fa-camera"], [1, "row", "row-cols-1", "justify-content-center", 2, "margin-top", "5px"]], template: function FacialRecognitionComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](1, "i", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtext"](2, " Realice el proceso de verificaci\u00F3n de identidad mediante reconocimiento facial\n");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](3, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](4, FacialRecognitionComponent_div_4_Template, 4, 0, "div", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](5, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementStart"](6, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](7, FacialRecognitionComponent_div_7_Template, 4, 0, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](8, FacialRecognitionComponent_div_8_Template, 4, 2, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](9, FacialRecognitionComponent_ng_template_9_Template, 6, 0, "ng-template", null, 6, _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplateRefExtractor"]);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](11, FacialRecognitionComponent_div_11_Template, 13, 0, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](12, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](13, FacialRecognitionComponent_div_13_Template, 5, 0, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](14, FacialRecognitionComponent_div_14_Template, 5, 0, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵtemplate"](15, FacialRecognitionComponent_div_15_Template, 5, 0, "div", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelement"](16, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        const _r3 = _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵreference"](10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.falloReconocimientoFacial);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", !ctx.showFooterWebcam && ctx.errors.length == 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.deviceId != "" && ctx.errors.length == 0)("ngIfElse", _r3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errors.length == 0 && !ctx.rcFailed && ctx.showFooterWebcam && ctx.finishprocess);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errors.length == 0 && !ctx.rcFailed && ctx.showFooterWebcam && ctx.finishprocess);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errors.length == 0 && ctx.rcFailed && ctx.showFooterWebcam && ctx.IsMobile);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵadvance"](1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵɵproperty"]("ngIf", ctx.errors.length == 0 && ctx.rcFailed && ctx.showFooterWebcam);
+    } }, directives: [_angular_common__WEBPACK_IMPORTED_MODULE_7__["NgIf"], ngx_webcam__WEBPACK_IMPORTED_MODULE_8__["WebcamComponent"], _angular_material_progress_spinner__WEBPACK_IMPORTED_MODULE_9__["MatSpinner"]], encapsulation: 2 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵsetClassMetadata"](FacialRecognitionComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"],
+        args: [{
+                selector: 'app-facial-recognition',
+                templateUrl: './facial-recognition.component.html',
+                styles: [],
+            }]
+    }], function () { return [{ type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_5__["MatDialog"] }, { type: ngx_device_detector__WEBPACK_IMPORTED_MODULE_6__["DeviceDetectorService"] }]; }, { pictureTaken: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["Output"]
+        }], getScreenSize: [{
+            type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["HostListener"],
+            args: ['window:resize', ['$event']]
+        }] }); })();
+
+
+/***/ }),
+
+/***/ "./src/app/views/partials/alert-block/alert-block.component.ts":
+/*!*********************************************************************!*\
+  !*** ./src/app/views/partials/alert-block/alert-block.component.ts ***!
+  \*********************************************************************/
+/*! exports provided: AlertBlockComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AlertBlockComponent", function() { return AlertBlockComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/dialog.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/__ivy_ngcc__/fesm2015/router.js");
+
+
+
+
+
+
+class AlertBlockComponent {
+    constructor(data, router, dialogRef) {
+        this.data = data;
+        this.router = router;
+        this.dialogRef = dialogRef;
+    }
+    ngOnInit() {
+        this.mensaje = this.data.mensaje;
+    }
+    close() {
+        this.dialogRef.closeAll();
+        this.router.navigateByUrl('/iniciar');
+    }
+}
+AlertBlockComponent.ɵfac = function AlertBlockComponent_Factory(t) { return new (t || AlertBlockComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]), _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"])); };
+AlertBlockComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: AlertBlockComponent, selectors: [["app-alert-block"]], decls: 10, vars: 1, consts: [[1, "container"], ["role", "alert", 1, "alert", "alert-inf", "mb-0", 2, "background-color", "#920808"], [1, "fas", "fa-times-circle", "mr-2", 2, "color", "#ffffff", "font-size", "20px"], [2, "color", "#ffffff"], [1, "row", "row-cols-1", "justify-content-center"], [1, "col-auto"], [1, "btn-infod", "btn", 2, "text-transform", "uppercase", "width", "150px", 3, "click"]], template: function AlertBlockComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "span", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](6, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "div", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](8, "button", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function AlertBlockComponent_Template_button_click_8_listener() { return ctx.close(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](9, " ACEPTAR ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } if (rf & 2) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵadvance"](4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtextInterpolate1"](" ", ctx.mensaje, " ");
+    } }, encapsulation: 2 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](AlertBlockComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-alert-block',
+                templateUrl: './alert-block.component.html',
+                styleUrls: [],
+            }]
+    }], function () { return [{ type: undefined, decorators: [{
+                type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"],
+                args: [_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MAT_DIALOG_DATA"]]
+            }] }, { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] }, { type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialog"] }]; }, null); })();
+
+
+/***/ }),
+
+/***/ "./src/app/views/partials/face-ok/face-ok.component.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/views/partials/face-ok/face-ok.component.ts ***!
+  \*************************************************************/
+/*! exports provided: FaceOkComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "FaceOkComponent", function() { return FaceOkComponent; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/__ivy_ngcc__/fesm2015/core.js");
+/* harmony import */ var _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/material/dialog */ "./node_modules/@angular/material/__ivy_ngcc__/fesm2015/dialog.js");
+
+
+
+class FaceOkComponent {
+    constructor(dialogRef) {
+        this.dialogRef = dialogRef;
+    }
+    ngOnInit() {
+    }
+    close() {
+        this.dialogRef.close();
+    }
+}
+FaceOkComponent.ɵfac = function FaceOkComponent_Factory(t) { return new (t || FaceOkComponent)(_angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdirectiveInject"](_angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"])); };
+FaceOkComponent.ɵcmp = _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵdefineComponent"]({ type: FaceOkComponent, selectors: [["app-face-ok"]], decls: 15, vars: 0, consts: [[1, "d-flex"], [1, "ml-auto", "p-2", 2, "color", "#000000", "cursor", "pointer", 3, "click"], [1, "fas", "fa-times-circle", "mr-2", 2, "font-size", "20px"], ["role", "alert", 1, "alert", "mb-0", 2, "margin-left", "auto", "margin-right", "auto"], [2, "margin-left", "auto", "margin-right", "auto", "text-align", "center"], [1, "fas", "fa-check-circle", "mr-2", 2, "color", "#009845", "font-size", "35px", "margin-right", "auto", "margin-left", "auto"], [2, "color", "#009845", "font-size", "25px", "font-weight", "bold"], [1, "row", "row-cols-1", "justify-content-end"], [1, "col-auto"], [1, "btn", 2, "text-transform", "uppercase", "cursor", "pointer", "color", "#009845", "font-size", "15px", 3, "click"], [1, "fas", "fa-arrow-right"]], template: function FaceOkComponent_Template(rf, ctx) { if (rf & 1) {
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](0, "div", 0);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](1, "div", 1);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FaceOkComponent_Template_div_click_1_listener() { return ctx.close(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](2, "i", 2);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](3, "div", 3);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](4, "div", 4);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](5, "i", 5);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](6, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](7, "span", 6);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](8, " CONFIRMACI\u00D3N EXITOSA ");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](9, "br");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](10, "div", 7);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](11, "div", 8);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementStart"](12, "a", 9);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵlistener"]("click", function FaceOkComponent_Template_a_click_12_listener() { return ctx.close(); });
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵtext"](13, " CONTINUAR \u00A0\u00A0\u00A0");
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelement"](14, "i", 10);
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+        _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵɵelementEnd"]();
+    } }, encapsulation: 2 });
+/*@__PURE__*/ (function () { _angular_core__WEBPACK_IMPORTED_MODULE_0__["ɵsetClassMetadata"](FaceOkComponent, [{
+        type: _angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"],
+        args: [{
+                selector: 'app-face-ok',
+                templateUrl: './face-ok.component.html',
+                styles: []
+            }]
+    }], function () { return [{ type: _angular_material_dialog__WEBPACK_IMPORTED_MODULE_1__["MatDialogRef"] }]; }, null); })();
 
 
 /***/ }),
